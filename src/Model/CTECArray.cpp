@@ -30,7 +30,7 @@ int CTECArray<Type>::getSize()
 template <class Type>
 Type* CTECArray<Type>::get(int position)
 {
-	//We need to do bounds cheing so we do not crash the program.
+	//We need to do bounds checking so we do not crash the program.
 	if(position >= size || position < 0)
 	{
 		//Out of bounds
@@ -58,5 +58,25 @@ Type* CTECArray<Type>::get(int position)
 template <class Type>
 void CTECArray<Type>::set(int position, Type value)
 {
-
+	if(position >= size || position < 0)
+	{
+		//Out of bounds
+		cerr << "position value is out of bounds :(" << endl;
+	}
+	else
+	{
+		//Inbounds
+		ArrayNode<Type> * current = head;
+		for(int spot = 0; spot <= position; spot++)
+		{
+			if(spot != position)
+			{
+				current = current->getNext();
+			}
+			else
+			{
+				current->setValue(value);
+			}
+		}
+	}
 }
