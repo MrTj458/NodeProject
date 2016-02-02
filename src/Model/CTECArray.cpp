@@ -8,15 +8,31 @@
 #include "CTECArray.h"
 
 template <class Type>
-CTECArray<Type>::CTECArray()
+CTECArray<Type>::CTECArray(int size)
 {
-	// TODO Auto-generated constructor stub
-
+	this->size = size;
 }
 
 template <class Type>
 CTECArray<Type>::~CTECArray()
 {
-	// TODO Auto-generated destructor stub
+
 }
 
+template <class Type>
+int CTECArray<Type>::getSize()
+{
+
+}
+
+template <class Type>
+void CTECArray<Type>::set(int position, Type value)
+{
+
+}
+
+template <class Type>
+Type CTECArray<Type>::get(int position)
+{
+
+}
