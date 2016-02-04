@@ -6,13 +6,20 @@
  */
 
 #include "CTECArray.h"
-#include <iostream>
 using namespace std;
 
 template <class Type>
 CTECArray<Type>::CTECArray(int size)
 {
 	this->size = size;
+	this->head = nullptr;
+
+	//Defensive code
+	if(size <= 0)
+	{
+		cerr << "Array list is too small." << endl;
+		return;
+	}
 }
 
 template <class Type>
