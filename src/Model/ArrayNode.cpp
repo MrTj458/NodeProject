@@ -8,12 +8,20 @@
 #include "ArrayNode.h"
 #include <iostream>;
 
+/*
+ * Default constructor for the ArrayNode.
+ * Inherits from the Node.
+ * Sets the next pointer to nullptr.
+ */
 template <class Type>
 ArrayNode<Type>::ArrayNode() : Node<Type>()
 {
 	this->next = nullptr;
 }
 
+/*
+ * Constructor for the ArrayNode that sets the value of the Node to the inputed value.
+ */
 template <class Type>
 ArrayNode<Type>::ArrayNode(Type value) : Node<Type>(value)
 {
@@ -21,6 +29,11 @@ ArrayNode<Type>::ArrayNode(Type value) : Node<Type>(value)
 	this->value = value;
 }
 
+/*
+ * Constructor for the Array node that takes a value and a pointer to another ArrayNode.
+ * Sets the next value to the inputed pointer.
+ * Sets the value of the Node to the inputed value.
+ */
 template <class Type>
 ArrayNode<Type>::ArrayNode(Type value, ArrayNode * next) : Node<Type>(value)
 {
@@ -28,18 +41,28 @@ ArrayNode<Type>::ArrayNode(Type value, ArrayNode * next) : Node<Type>(value)
 	this->value = value;
 }
 
+/*
+ * Destructor for the ArrayNode.
+ * Unused.
+ */
 template <class Type>
 ArrayNode<Type>::~ArrayNode()
 {
-	// TODO Auto-generated destructor stub
+	//Destructor
 }
 
+/*
+ * returns a pointer to the next ArrayNode in the list.
+ */
 template <class Type>
 ArrayNode<Type> * ArrayNode<Type>::getNext()
 {
 	return this->next;
 }
 
+/*
+ * Sets the pointer to the next ArrayNode to the inputed pointer.
+ */
 template <class Type>
 void ArrayNode<Type>::setNext(ArrayNode<Type> * next)
 {
