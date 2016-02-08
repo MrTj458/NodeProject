@@ -23,7 +23,7 @@ ArrayNode<Type>::ArrayNode() : Node<Type>()
  * Constructor for the ArrayNode that sets the value of the Node to the inputed value.
  */
 template <class Type>
-ArrayNode<Type>::ArrayNode(Type value) : Node<Type>(value)
+ArrayNode<Type>::ArrayNode(const Type& value) : Node<Type>(value)
 {
 	this->next = nullptr;
 	this->value = value;
@@ -35,7 +35,7 @@ ArrayNode<Type>::ArrayNode(Type value) : Node<Type>(value)
  * Sets the value of the Node to the inputed value.
  */
 template <class Type>
-ArrayNode<Type>::ArrayNode(Type value, ArrayNode * next) : Node<Type>(value)
+ArrayNode<Type>::ArrayNode(const Type& value, ArrayNode * next) : Node<Type>(value)
 {
 	this->next = next;
 	this->value = value;

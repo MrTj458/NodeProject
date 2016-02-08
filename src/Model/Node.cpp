@@ -23,7 +23,7 @@ Node<Type>::Node()
  * Sets the value for value, and sets the pointers to nullptr.
  */
 template<class Type>
-Node<Type>::Node(Type value)
+Node<Type>::Node(const Type& value)
 {
 	this->value = value;
 	this->pointers = nullptr;
@@ -52,7 +52,7 @@ Type Node<Type> :: getValue()
  * Sets the nodes value to the inputed value.
  */
 template<class Type>
-void Node<Type> :: setValue(Type value)
+void Node<Type> :: setValue(const Type& value)
 {
 	this->value = value;
 }
