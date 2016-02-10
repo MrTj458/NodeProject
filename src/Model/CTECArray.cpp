@@ -22,23 +22,19 @@ CTECArray<Type>::CTECArray(int size)
 	this->head = nullptr;
 
 	//Defensive code
-	if(size <= 0)
-	{
-		cerr << "Array list is too small." << endl;
-		return;
-	}
+	assert(size > 0);
 
 	for(int index = 0; index < size; index++)
 	{
 		if(head != nullptr)
 		{	//Regular ArrayNodes are being made.
-			ArrayNode<Type> * nextNode;
+			ArrayNode<Type> * nextNode = new ArrayNode<Type>();
 			nextNode->setNext(head);
 			this->head = nextNode;
 		}
 		else
 		{	//The first ArrayNode needs to be made.
-			ArrayNode<Type> * firstNode;
+			ArrayNode<Type> * firstNode = new ArrayNode<Type>();
 			this->head = firstNode;
 		}
 	}
