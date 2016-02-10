@@ -6,6 +6,8 @@
  */
 
 #include "CTECArray.h"
+#include <iostream>
+#include <assert.h>
 using namespace std;
 
 /*
@@ -30,14 +32,14 @@ CTECArray<Type>::CTECArray(int size)
 	{
 		if(head != nullptr)
 		{	//Regular ArrayNodes are being made.
-			ArrayNode<Type> nextNode;
-			nextNode.setNext(head);
-			this->head = &nextNode;
+			ArrayNode<Type> * nextNode;
+			nextNode->setNext(head);
+			this->head = nextNode;
 		}
 		else
 		{	//The first ArrayNode needs to be made.
-			ArrayNode<Type> firstNode;
-			this->head = &firstNode;
+			ArrayNode<Type> * firstNode;
+			this->head = firstNode;
 		}
 	}
 }
@@ -80,27 +82,19 @@ int CTECArray<Type>::getSize()
 template <class Type>
 Type CTECArray<Type>::get(int position)
 {
-	//We need to do bounds checking so we do not crash the program.
-	if(position >= size || position < 0)
+	//check for out of bounds
+	assert(position < size && position >= 0);
+	//Inbounds
+	ArrayNode<Type> * current = head;
+	for(int spot = 0; spot <= position; spot++)
 	{
-		//Out of bounds
-		cerr << "position value is out of bounds :(" << endl;
-		return nullptr;
-	}
-	else
-	{
-		//Inbounds
-		ArrayNode<Type> * current = head;
-		for(int spot = 0; spot <= position; spot++)
+		if(spot != position)
 		{
-			if(spot != position)
-			{
-				current = current->getNext();
-			}
-			else
-			{
-				return current->getValue();
-			}
+			current = current->getNext();
+		}
+		else
+		{
+			return current->getValue();
 		}
 	}
 }
@@ -111,25 +105,19 @@ Type CTECArray<Type>::get(int position)
 template <class Type>
 void CTECArray<Type>::set(int position, const Type& value)
 {
-	if(position >= size || position < 0)
+	//Check for out of bounds.
+	assert(position < size && position >= 0);
+	//Inbounds
+	ArrayNode<Type> * current = head;
+	for(int spot = 0; spot <= position; spot++)
 	{
-		//Out of bounds
-		cerr << "position value is out of bounds :(" << endl;
-	}
-	else
-	{
-		//Inbounds
-		ArrayNode<Type> * current = head;
-		for(int spot = 0; spot <= position; spot++)
+		if(spot != position)
 		{
-			if(spot != position)
-			{
-				current = current->getNext();
-			}
-			else
-			{
-				current->setValue(value);
-			}
+			current = current->getNext();
+		}
+		else
+		{
+			current->setValue(value);
 		}
 	}
 }

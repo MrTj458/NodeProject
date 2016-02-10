@@ -7,7 +7,6 @@
 
 #ifndef MODEL_CTECARRAY_H_
 #define MODEL_CTECARRAY_H_
-#include <iostream>
 #include "ArrayNode.h"
 
 template <class Type>
