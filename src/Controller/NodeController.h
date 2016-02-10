@@ -18,6 +18,7 @@ class NodeController
 {
 private:
 	CTECArray<int> * notHipsterInts;
+	CTECArray<double> * notHipsterDoubles;
 public:
 	NodeController();
 	virtual ~NodeController();
