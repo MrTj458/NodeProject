@@ -78,7 +78,7 @@ int CTECArray<Type>::getSize()
  * Returns the value of the Node in the inputed position.
  */
 template <class Type>
-Type* CTECArray<Type>::get(int position)
+Type CTECArray<Type>::get(int position)
 {
 	//We need to do bounds checking so we do not crash the program.
 	if(position >= size || position < 0)
@@ -109,7 +109,7 @@ Type* CTECArray<Type>::get(int position)
  * Sets the value of the inputed position to the inputed value.
  */
 template <class Type>
-void CTECArray<Type>::set(int position, Type value)
+void CTECArray<Type>::set(int position, const Type& value)
 {
 	if(position >= size || position < 0)
 	{
