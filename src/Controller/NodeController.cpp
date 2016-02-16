@@ -22,6 +22,8 @@ NodeController::~NodeController()
 
 void NodeController :: start()
 {
+	arrayTimer.startTimer();
+
 	for(int index = 0; index < notHipsterInts->getSize(); index++)
 	{
 		notHipsterInts->set(index, (index + 1));
@@ -41,4 +43,7 @@ void NodeController :: start()
 	{
 		cout << "The double in spot " << index << " are: " << notHipsterDoubles->get(index) << endl;
 	}
+
+	arrayTimer.stopTimer();
+	arrayTimer.displayTimerInformation();
 }
