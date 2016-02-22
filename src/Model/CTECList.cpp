@@ -6,6 +6,8 @@
  */
 
 #include "CTECList.h"
+#include <iostream>
+using namespace std;
 
 template <class Type>
 CTECList<Type>::CTECList()
@@ -30,7 +32,8 @@ int CTECList<Type>::getSize()
 template <class Type>
 void CTECList<Type>::addToFront(const Type& value)
 {
-
+	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, head);
+	this->head = newNode;
 }
 
 template <class Type>
@@ -48,13 +51,13 @@ void CTECList<Type>::addAtIndex(int index, const Type& value)
 template <class Type>
 Type CTECList<Type>::getFront()
 {
-
+	return this->head;
 }
 
 template <class Type>
 Type CTECList<Type>::getEnd()
 {
-
+	return this->end;
 }
 
 template <class Type>
