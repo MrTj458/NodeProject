@@ -25,10 +25,10 @@ public:
 	void addAtIndex(int index, const Type& value);
 	Type getFront();
 	Type getEnd();
-	Type getFromIndex();
+	Type getFromIndex(int index);
 	Type removeFromFront();
 	Type removeFromEnd();
-	Type removeFromIndex();
+	Type removeFromIndex(int index);
 	Type set(int index, const Type& value);
 };
 

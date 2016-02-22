@@ -7,12 +7,81 @@
 
 #include "CTECList.h"
 
-CTECList::CTECList() {
+template <class Type>
+CTECList<Type>::CTECList()
+{
 	// TODO Auto-generated constructor stub
 
 }
 
-CTECList::~CTECList() {
+template <class Type>
+CTECList<Type>::~CTECList()
+{
 	// TODO Auto-generated destructor stub
 }
 
+template <class Type>
+int CTECList<Type>::getSize()
+{
+
+}
+
+template <class Type>
+void CTECList<Type>::addToFront(const Type& value)
+{
+
+}
+
+template <class Type>
+void CTECList<Type>::addToEnd(const Type& value)
+{
+
+}
+
+template <class Type>
+void CTECList<Type>::addAtIndex(int index, const Type& value)
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::getFront()
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::getEnd()
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::getFromIndex(int index)
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::removeFromFront()
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::removeFromEnd()
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::removeFromIndex(int index)
+{
+
+}
+
+template <class Type>
+Type CTECList<Type>::set(int index, const Type& value)
+{
+
+}
