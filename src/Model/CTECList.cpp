@@ -69,6 +69,7 @@ Type CTECList<Type>::getFromIndex(int index)
 template <class Type>
 Type CTECList<Type>::removeFromFront()
 {
+	assert(this->size > 0)
 //Declare a variable of the type to return.
 	Type thingToRemove;
 //Find the next spot
