@@ -7,6 +7,7 @@
 
 #include "CTECList.h"
 #include <iostream>
+#include <assert.h>
 using namespace std;
 
 template <class Type>
@@ -94,7 +95,28 @@ Type CTECList<Type>::removeFromEnd()
 template <class Type>
 Type CTECList<Type>::removeFromIndex(int index)
 {
+	assert(this->size > 0);
+	assert(index >= 0 && index < size);
 
+	Type thingToRemove;
+
+	ArrayNode<Type> * previous, deleteMe, newNext;
+
+	if(index == 0)
+	{
+		thingToRemove = removeFromFront();
+	}
+	else if(index == size-1)
+	{
+		thingToRemove = removeFromEnd();
+	}
+	else
+	{
+		for(int spot = 0; spot < index+1; spot++)
+		{
+
+		}
+	}
 }
 
 template <class Type>
