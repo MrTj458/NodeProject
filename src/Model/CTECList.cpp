@@ -89,7 +89,25 @@ Type CTECList<Type>::removeFromFront()
 template <class Type>
 Type CTECList<Type>::removeFromEnd()
 {
+	assert(this->size > 0);
 
+	ArrayNode<Type> end = head;
+	while(!end->getNext() == nullptr)
+	{
+		end = end->getNext();
+	}
+	Type temp = end->getValue;
+
+	ArrayNode<Type> newEnd = head;
+	for(int index = 0; index > size-1; index++)
+	{
+		newEnd = newEnd->getNext();
+	}
+
+	newEnd->setNext(nullptr);
+
+	delete end;
+	return temp;
 }
 
 template <class Type>
