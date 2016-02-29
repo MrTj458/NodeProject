@@ -76,7 +76,14 @@ void CTECList<Type>::addToEnd(const Type& value)
 template <class Type>
 void CTECList<Type>::addAtIndex(int index, const Type& value)
 {
-
+	ArrayNode<Type> * newNode = new ArrayNode<Type>(value);
+	ArrayNode<Type> * current = head;
+	for(int spot = 0; spot < index-1; spot++)
+	{
+		current = current->getNext();
+	}
+	newNode->setNext(current->getNext());
+	current->setNext(newNode);
 }
 
 template <class Type>
