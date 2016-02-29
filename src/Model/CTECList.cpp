@@ -31,6 +31,29 @@ int CTECList<Type>::getSize()
 }
 
 template <class Type>
+void CTECList<Type>::calculateSize()
+{
+	assert(size >= 0);
+
+	int count = 0;
+	if(head == nullptr)
+	{
+		size = count;
+	}
+	else
+	{
+		count++;
+		ArrayNode<Type> * current = head;
+		while(current->getNext != nullptr)
+		{
+			count++;
+			current = current->getNext();
+		}
+		size = count;
+	}
+}
+
+template <class Type>
 void CTECList<Type>::addToFront(const Type& value)
 {
 	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, head);
@@ -77,7 +100,7 @@ Type CTECList<Type>::removeFromFront()
 	ArrayNode<Type> * newHead = new ArrayNode<Type>();
 	newHead = this->head->getNext();
 //Get what head is holding
-	thingToRemove = this->head->getValue;
+	thingToRemove = this->head->getValue();
 //Remove head
 	delete this->head;
 //Move head to next spot
