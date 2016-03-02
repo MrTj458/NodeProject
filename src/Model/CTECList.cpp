@@ -140,24 +140,31 @@ Type CTECList<Type>::removeFromEnd()
 {
 	assert(this->size > 0);
 
-	ArrayNode<Type> * end = head;
-	while(!end->getNext() == nullptr)
+	Type returnValue;
+
+	if(size == 1)
 	{
-		end = end->getNext();
+		ArrayNode<Type> * toRemove = end;
+		returnValue = removeFromFront();
+		end = nullptr;
+		head = nullptr;
+		delete toRemove;
 	}
-	Type temp = end->getValue;
-
-	ArrayNode<Type> * newEnd = head;
-	for(int index = 0; index > size-1; index++)
+	else
 	{
-		newEnd = newEnd->getNext();
+		ArrayNode<Type> current = head;
+		for(int spot = 0; spot < size - 1; spot++)
+		{
+			current = current->getNext();
+		}
+		returnValue = end->getValue();
+		delete end;
+		current = end;
+		current->setNext(nullptr);
 	}
 
-	newEnd->setNext(nullptr);
-
-	delete end;
 	this->calculateSize();
-	return temp;
+	return returnValue;
 }
 
 template <class Type>
