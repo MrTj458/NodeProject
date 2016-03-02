@@ -191,20 +191,13 @@ Type CTECList<Type>::removeFromIndex(int index)
 	}
 	else
 	{
-		for(int spot = 0; spot < index; spot++)
-		{
-			deleteMe = deleteMe->getNext();
-		}
-
-		for(int spot = 0; spot < index+1; spot++)
-		{
-			newNext = newNext->getNext();
-		}
-
 		for(int spot = 0; spot < index-1; spot++)
 		{
 			previous = previous->getNext();
 		}
+
+		deleteMe = previous->getNext();
+		newNext = deleteMe->getNext();
 
 		thingToRemove = deleteMe->getValue();
 
