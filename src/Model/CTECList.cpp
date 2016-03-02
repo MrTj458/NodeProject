@@ -1,5 +1,5 @@
 /*
- * CTECList.cpp
+  * CTECList.cpp
  *
  *  Created on: Feb 22, 2016
  *      Author: thod0127
@@ -58,6 +58,7 @@ void CTECList<Type>::addToFront(const Type& value)
 {
 	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, head);
 	this->head = newNode;
+	this->calculateSize();
 }
 
 template <class Type>
@@ -71,6 +72,7 @@ void CTECList<Type>::addToEnd(const Type& value)
 	}
 
 	end->setNext(newNode);
+	this->calculateSize();
 }
 
 template <class Type>
@@ -84,6 +86,7 @@ void CTECList<Type>::addAtIndex(int index, const Type& value)
 	}
 	newNode->setNext(current->getNext());
 	current->setNext(newNode);
+	this->calculateSize();
 }
 
 template <class Type>
@@ -166,6 +169,10 @@ Type CTECList<Type>::removeFromIndex(int index)
 	Type thingToRemove;
 
 	ArrayNode<Type> * previous, deleteMe, newNext;
+	deleteMe = head;
+	previous = head;
+	newNext = head;
+
 
 	if(index == 0)
 	{
@@ -177,10 +184,28 @@ Type CTECList<Type>::removeFromIndex(int index)
 	}
 	else
 	{
+		for(int spot = 0; spot < index; spot++)
+		{
+			deleteMe = deleteMe->getNext();
+		}
+
 		for(int spot = 0; spot < index+1; spot++)
 		{
-
+			newNext = newNext->getNext();
 		}
+
+		for(int spot = 0; spot < index-1; spot++)
+		{
+			previous = previous->getNext();
+		}
+
+		thingToRemove = deleteMe->getValue();
+
+		previous->setNext(newNext);
+		delete deleteMe;
+
+		this->calculateSize();
+		return thingToRemove;
 	}
 }
 
