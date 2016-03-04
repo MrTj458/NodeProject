@@ -29,6 +29,8 @@ void NodeController :: start()
  myList.addToEnd(3);
  myList.addToEnd(4);
  myList.addToEnd(5);
- myList.removeFromEnd();
- cout << myList.getEnd() << endl;
+ myList.addAtIndex(3, 10);
+ cout << myList.getFromIndex(2) << endl;
+ cout << myList.getFromIndex(3) << endl;
+ cout << myList.getFromIndex(4) << endl;
 }

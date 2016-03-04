@@ -146,16 +146,15 @@ template <class Type>
 Type CTECList<Type>::removeFromFront()
 {
 	assert(this->size > 0);
-//Declare a variable of the type to return.
+
 	Type thingToRemove;
-//Find the next spot
+
 	ArrayNode<Type> * newHead = new ArrayNode<Type>();
 	newHead = this->head->getNext();
-//Get what head is holding
 	thingToRemove = this->head->getValue();
-//Remove head
+
 	delete this->head;
-//Move head to next spot
+
 	this->head = newHead;
 	this->calculateSize();
 
