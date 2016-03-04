@@ -10,17 +10,16 @@
 #include "../Model/Node.cpp"
 #include "../Model/ArrayNode.cpp"
 #include "../Model/CTECArray.cpp"
-#include "../Model/Timer.h";
-#include <string>;
+#include "../Model/CTECList.cpp"
+#include "../Model/Timer.h"
+#include <string>
 
 using namespace std;
 
 class NodeController
 {
 private:
-	CTECArray<int> * notHipsterInts;
-	CTECArray<double> * notHipsterDoubles;
-	Timer arrayTimer;
+
 public:
 	NodeController();
 	virtual ~NodeController();

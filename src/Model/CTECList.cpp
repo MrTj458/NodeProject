@@ -44,7 +44,7 @@ void CTECList<Type>::calculateSize()
 	{
 		count++;
 		ArrayNode<Type> * current = head;
-		while(current->getNext != nullptr)
+		while(current->getNext() != nullptr)
 		{
 			count++;
 			current = current->getNext();
@@ -56,7 +56,7 @@ void CTECList<Type>::calculateSize()
 template <class Type>
 void CTECList<Type>::addToFront(const Type& value)
 {
-	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, * head);
+	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, head);
 	this->head = newNode;
 	this->calculateSize();
 }
@@ -64,14 +64,21 @@ void CTECList<Type>::addToFront(const Type& value)
 template <class Type>
 void CTECList<Type>::addToEnd(const Type& value)
 {
-	ArrayNode<Type> * newNode = new ArrayNode<Type>(value);
-	ArrayNode<Type> * end = head;
-	while(end->getNext() != nullptr)
+	if(size == 0)
 	{
-		end = end->getNext();
+		addToFront(value);
 	}
+	else
+	{
+		ArrayNode<Type> * newNode = new ArrayNode<Type>(value);
+		ArrayNode<Type> * end = head;
+		while(end->getNext() != nullptr)
+		{
+			end = end->getNext();
+		}
 
-	end->setNext(newNode);
+		end->setNext(newNode);
+	}
 	this->calculateSize();
 }
 
@@ -106,13 +113,19 @@ void CTECList<Type>::addAtIndex(int index, const Type& value)
 template <class Type>
 Type CTECList<Type>::getFront()
 {
-	return this->head;
+	return head->getValue();
 }
 
 template <class Type>
 Type CTECList<Type>::getEnd()
 {
-	return this->end;
+	ArrayNode<Type> * end = head;
+	while(end->getNext() != nullptr)
+	{
+		end = end->getNext();
+	}
+
+	return end->getValue();
 }
 
 template <class Type>
@@ -158,23 +171,19 @@ Type CTECList<Type>::removeFromEnd()
 
 	if(size == 1)
 	{
-		ArrayNode<Type> * toRemove = end;
 		returnValue = removeFromFront();
-		end = nullptr;
-		head = nullptr;
-		delete toRemove;
 	}
 	else
 	{
-		ArrayNode<Type> current = head;
-		for(int spot = 0; spot < size - 1; spot++)
+		ArrayNode<Type> * previous = head;
+		for(int index = 0; index < size - 2; index++)
 		{
-			current = current->getNext();
+			previous = previous->getNext();
 		}
-		returnValue = end->getValue();
-		delete end;
-		current = end;
-		current->setNext(nullptr);
+		ArrayNode<Type> * deleteMe = previous->getNext();
+		returnValue = deleteMe->getValue();
+		delete deleteMe;
+		previous->setNext(nullptr);
 	}
 
 	this->calculateSize();
@@ -189,10 +198,9 @@ Type CTECList<Type>::removeFromIndex(int index)
 
 	Type thingToRemove;
 
-	ArrayNode<Type> * previous, deleteMe, newNext;
-	deleteMe = head;
-	previous = head;
-	newNext = head;
+	ArrayNode<Type> * previous = head;
+	ArrayNode<Type> * deleteMe = head;
+	ArrayNode<Type> * newNext = head;
 
 
 	if(index == 0)
@@ -217,10 +225,9 @@ Type CTECList<Type>::removeFromIndex(int index)
 
 		previous->setNext(newNext);
 		delete deleteMe;
-
-		this->calculateSize();
-		return thingToRemove;
 	}
+	this->calculateSize();
+	return thingToRemove;
 }
 
 template <class Type>

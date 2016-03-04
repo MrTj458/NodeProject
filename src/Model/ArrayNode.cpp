@@ -1,4 +1,5 @@
 /*
+
  * ArrayNode.cpp
  *
  *  Created on: Jan 29, 2016
@@ -6,7 +7,7 @@
  */
 
 #include "ArrayNode.h"
-#include <iostream>;
+#include <iostream>
 
 /*
  * Default constructor for the ArrayNode.
@@ -26,7 +27,7 @@ template <class Type>
 ArrayNode<Type>::ArrayNode(const Type& value) : Node<Type>(value)
 {
 	this->next = nullptr;
-	this->value = value;
+	this->setValue(value);
 }
 
 /*
@@ -38,7 +39,7 @@ template <class Type>
 ArrayNode<Type>::ArrayNode(const Type& value, ArrayNode * next) : Node<Type>(value)
 {
 	this->next = next;
-	this->value = value;
+	this->setValue(value);
 }
 
 /*

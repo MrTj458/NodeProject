@@ -5,7 +5,7 @@
  *      Author: thod0127
  */
 
-#include "NodeController.h";
+#include "NodeController.h"
 
 int main()
 {
