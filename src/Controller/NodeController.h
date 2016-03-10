@@ -19,11 +19,12 @@ using namespace std;
 class NodeController
 {
 private:
-
+	CTECList<int> * numbers;
 public:
 	NodeController();
 	virtual ~NodeController();
 	void start();
+	void testLists();
 };
 
 #endif /* CONTROLLER_NODECONTROLLER_H_ */

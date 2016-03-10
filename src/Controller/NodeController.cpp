@@ -11,8 +11,7 @@ using namespace std;
 
 NodeController::NodeController()
 {
-
-
+	numbers = new CTECList<int>();
 }
 
 NodeController::~NodeController()
@@ -22,14 +21,11 @@ NodeController::~NodeController()
 
 void NodeController :: start()
 {
- CTECList<int> myList;
- myList.addToEnd(0);
- myList.addToEnd(1);
- myList.addToEnd(2);
- myList.addToEnd(3);
- myList.addToEnd(4);
- myList.addToEnd(5);
- cout << myList.getFromIndex(3) << endl;
- myList.set(3, 15);
- cout << myList.getFromIndex(3) << endl;
+	testLists();
+}
+
+void NodeController::testLists()
+{
+	numbers->addAtIndex(0, 1);
+	cout << numbers->getFront() << endl;
 }

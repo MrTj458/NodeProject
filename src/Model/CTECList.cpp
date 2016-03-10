@@ -18,10 +18,31 @@ CTECList<Type>::CTECList()
 	this->end = nullptr;
 }
 
+/*
+ * 1: Start at head
+ * 2: Iterate over nodes
+ * 3: Update position, then delete
+ * 4: Delete final
+ * 5: Reset size, head, end to default
+ */
 template <class Type>
 CTECList<Type>::~CTECList()
 {
-	// TODO Auto-generated destructor stub
+	ArrayNode<Type> * current = head;
+
+	while(current->getNext() != nullptr)
+	{
+		ArrayNode<Type> * temp = current;
+
+		current = current->getNext();
+		head = current;
+		delete temp;
+	}
+
+	delete head;
+	head = nullptr;
+	end = nullptr;
+	size = 0;
 }
 
 template <class Type>
@@ -59,6 +80,11 @@ void CTECList<Type>::addToFront(const Type& value)
 	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, head);
 	this->head = newNode;
 	this->calculateSize();
+
+	if(size == 0)
+	{
+		end = head;
+	}
 }
 
 template <class Type>
@@ -71,13 +97,13 @@ void CTECList<Type>::addToEnd(const Type& value)
 	else
 	{
 		ArrayNode<Type> * newNode = new ArrayNode<Type>(value);
-		ArrayNode<Type> * end = head;
-		while(end->getNext() != nullptr)
+		ArrayNode<Type> * endNode = head;
+		while(endNode->getNext() != nullptr)
 		{
-			end = end->getNext();
+			endNode = endNode->getNext();
 		}
 
-		end->setNext(newNode);
+		endNode->setNext(newNode);
 	}
 	this->calculateSize();
 }
@@ -119,13 +145,13 @@ Type CTECList<Type>::getFront()
 template <class Type>
 Type CTECList<Type>::getEnd()
 {
-	ArrayNode<Type> * end = head;
-	while(end->getNext() != nullptr)
+	ArrayNode<Type> * endNode = head;
+	while(endNode->getNext() != nullptr)
 	{
-		end = end->getNext();
+		endNode = endNode->getNext();
 	}
 
-	return end->getValue();
+	return endNode->getValue();
 }
 
 template <class Type>
