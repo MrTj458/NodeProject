@@ -10,6 +10,9 @@
 #include <assert.h>
 using namespace std;
 
+/*
+ * Constructor
+ */
 template <class Type>
 CTECList<Type>::CTECList()
 {
@@ -19,11 +22,7 @@ CTECList<Type>::CTECList()
 }
 
 /*
- * 1: Start at head
- * 2: Iterate over nodes
- * 3: Update position, then delete
- * 4: Delete final
- * 5: Reset size, head, end to default
+ * Destructor
  */
 template <class Type>
 CTECList<Type>::~CTECList()
@@ -45,12 +44,18 @@ CTECList<Type>::~CTECList()
 	size = 0;
 }
 
+/*
+ * Returns the number of nodes in the CTECList
+ */
 template <class Type>
 int CTECList<Type>::getSize()
 {
 	return size;
 }
 
+/*
+ * Calculates how many nodes are currently in the CTECList
+ */
 template <class Type>
 void CTECList<Type>::calculateSize()
 {
@@ -74,6 +79,9 @@ void CTECList<Type>::calculateSize()
 	}
 }
 
+/*
+ * Adds a new node at the front of the list
+ */
 template <class Type>
 void CTECList<Type>::addToFront(const Type& value)
 {
@@ -87,6 +95,9 @@ void CTECList<Type>::addToFront(const Type& value)
 	}
 }
 
+/*
+ * Adds a new node to the end of the list
+ */
 template <class Type>
 void CTECList<Type>::addToEnd(const Type& value)
 {
@@ -108,6 +119,9 @@ void CTECList<Type>::addToEnd(const Type& value)
 	this->calculateSize();
 }
 
+/*
+ * Adds a new node at the inputted spot
+ */
 template <class Type>
 void CTECList<Type>::addAtIndex(int index, const Type& value)
 {
@@ -136,6 +150,9 @@ void CTECList<Type>::addAtIndex(int index, const Type& value)
 	this->calculateSize();
 }
 
+/*
+ * Returns the value of the node in the first spot of the list.
+ */
 template <class Type>
 Type CTECList<Type>::getFront()
 {
@@ -154,6 +171,9 @@ Type CTECList<Type>::getEnd()
 	return endNode->getValue();
 }
 
+/*
+ * Returns the value of the node in the specified spot
+ */
 template <class Type>
 Type CTECList<Type>::getFromIndex(int index)
 {
@@ -168,6 +188,9 @@ Type CTECList<Type>::getFromIndex(int index)
 	return current->getValue();
 }
 
+/*
+ * Removes the node in the front of the list
+ */
 template <class Type>
 Type CTECList<Type>::removeFromFront()
 {
@@ -187,6 +210,9 @@ Type CTECList<Type>::removeFromFront()
 	return thingToRemove;
 }
 
+/*
+ * Removes the node at the end of the list
+ */
 template <class Type>
 Type CTECList<Type>::removeFromEnd()
 {
@@ -215,6 +241,9 @@ Type CTECList<Type>::removeFromEnd()
 	return returnValue;
 }
 
+/*
+ * Removes the node from the specified spot
+ */
 template <class Type>
 Type CTECList<Type>::removeFromIndex(int index)
 {
@@ -255,6 +284,9 @@ Type CTECList<Type>::removeFromIndex(int index)
 	return thingToRemove;
 }
 
+/*
+ * sets the value of the specified node to the inputted value
+ */
 template <class Type>
 Type CTECList<Type>::set(int index, const Type& value)
 {
