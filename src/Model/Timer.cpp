@@ -34,7 +34,7 @@ void Timer::displayTimerInformation()
 	cout << fixed;
 	cout << setprecision(8);
 
-	cout << executionTime << " μs (microseconds) for the code " << endl;
+	cout << "The timer ran for " << executionTime << "μs (microseconds)" << endl;
 	cout << "Which is " << float(executionTime)/CLOCKS_PER_SEC << " seconds." << endl;
 }
 

@@ -20,6 +20,7 @@ class NodeController
 {
 private:
 	CTECList<int> * numbers;
+	Timer * timer;
 public:
 	NodeController();
 	virtual ~NodeController();
