@@ -18,7 +18,7 @@ CTECList<Type>::CTECList()
 {
 	this->size = 0;
 	this->head = nullptr;
-	this->end = nullptr;
+	this->end = nullptr; //Never used!
 }
 
 /*
@@ -88,11 +88,6 @@ void CTECList<Type>::addToFront(const Type& value)
 	ArrayNode<Type> * newNode = new ArrayNode<Type>(value, head);
 	this->head = newNode;
 	this->calculateSize();
-
-	if(size == 0)
-	{
-		end = head;
-	}
 }
 
 /*
@@ -299,4 +294,5 @@ Type CTECList<Type>::set(int index, const Type& value)
 	}
 
 	current->setValue(value);
+	return value;
 }
